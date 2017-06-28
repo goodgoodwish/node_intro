@@ -8,16 +8,18 @@ function start(route, handle) {
   	var pathname = url.parse(request.url).pathname;
   	console.log('Rquest for ' + pathname + ' received.');
 
-  	request.setEncoding("utf8");
+  	//request.setEncoding("utf8");
+    //
+  	//request.addListener("data", function (postDataChunk) {
+  	//	postData += postDataChunk;
+  	//	console.log('Received POST data chunk "' + postDataChunk +'".');
+  	//})
+    //
+  	//request.addListener("end", function () {
+  	//	route(handle, pathname, response, postData);
+  	//})
 
-  	request.addListener("data", function (postDataChunk) {
-  		postData += postDataChunk;
-  		console.log('Received POST data chunk "' + postDataChunk +'".');
-  	})
-
-  	request.addListener("end", function () {
-  		route(handle, pathname, response, postData);
-  	})
+  	route(handle, pathname, response, postData, request);
 
   }
 
